@@ -3,15 +3,30 @@ DB relazionale piattaforma di condivisione di ricette online e gestione delle re
 
 Descrizione del progetto: 
 
-Questo progetto permette la creazione di un database per la gestione di attività tipiche di una piattaforma di ricette online quali per esempio: gestione delle
-recensioni e ricerca di ricette tipiche della cucina italiana in base agli ingredienti disponibili.
+Questo progetto implementa un database relazionale per la gestione delle funzionalità tipiche di una piattaforma di condivisione di ricette online, come:
 
-Il database tiene in considerazione anche di eventuali intolleranze alimentari degli utenti registrati alla piattaforma ad alcuni ingredienti presenti in diverse
-ricette; e consente di effettuare operazioni di query SQL per interragare il database filtrando soltanto i record di ricette senza glutine e senza lattosio.   
-Il database consente operazioni di DML(Data Manipulation Language) e DDL(Data Definition Language).
+    - la gestione degli utenti e delle recensioni
 
+    - la pubblicazione di ricette
+
+    - la ricerca di ricette italiane in base agli ingredienti disponibili
+
+    - il filtraggio dei risultati in base a intolleranze alimentari (es. glutine, lattosio)
+
+Il database supporta operazioni di tipo DDL (Data Definition Language) e DML (Data Manipulation Language) in linguaggio SQL.
 
 Istruzioni:
+Importa `creazione_db.sql` nel tuo DBMS MySQL per creare il database.
 
 È possibile consultare il file .pdf che contiene la relativa documentazione sulla progettazione del database.
 I file operazioni.txt e trigger.txt contengono rispettivamente operazioni che sono possibili effettuare sul database ed esempio di trigger.
+
+e.g. di query nel file operazioni.txt:
+
+SELECT R.id_ricetta, R.titolo, R.id_categoria, R.numero_recensioni, R.dosi_per, R.preparazione,
+        R.senza_glutine, R.senza_lattosio, R.gourmet, R.media_apprezzamento
+FROM ricetta R, contiene C, ingrediente I
+WHERE R.id_ricetta = C.id_ricetta AND C.id_ingrediente = I.id_ingrediente AND
+      I.nome = "Spaghetti" AND
+      C.quantita < "250g"
+
