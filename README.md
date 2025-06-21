@@ -25,7 +25,9 @@ e.g. di query nel file operazioni.txt:
 
 SELECT R.id_ricetta, R.titolo, R.id_categoria, R.numero_recensioni, R.dosi_per, R.preparazione,
         R.senza_glutine, R.senza_lattosio, R.gourmet, R.media_apprezzamento
+        
 FROM ricetta R, contiene C, ingrediente I
+
 WHERE R.id_ricetta = C.id_ricetta AND C.id_ingrediente = I.id_ingrediente AND
       I.nome = "Spaghetti" AND
       C.quantita < "250g"
