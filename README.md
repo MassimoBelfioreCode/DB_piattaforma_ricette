@@ -19,9 +19,9 @@ Istruzioni:
 Importa `creazione_db.sql` nel tuo DBMS MySQL per creare il database.
 
 È possibile consultare il file .pdf che contiene la relativa documentazione sulla progettazione del database.
-I file operazioni.txt e trigger.txt contengono rispettivamente operazioni che sono possibili effettuare sul database ed esempio di trigger.
+I file operazioni.sql e trigger.sql contengono rispettivamente operazioni che sono possibili effettuare sul database ed esempio di trigger.
 
-Esempio di query nel file operazioni.txt:
+Esempio di query nel file operazioni.sql:
 
 SELECT R.id_ricetta, R.titolo, R.id_categoria, R.numero_recensioni, R.dosi_per, R.preparazione,
         R.senza_glutine, R.senza_lattosio, R.gourmet, R.media_apprezzamento
