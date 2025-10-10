@@ -46,10 +46,10 @@ WHERE i.id_ingrediente = c.id_ingrediente AND c.id_ricetta = r.id_ricetta AND
 
 
 --O7: Visionare tutti gli ingredienti con lattosio verso cui un utente registrato è intollerante
---mi serve la tabella intolleranza alimentare verso, la tabella ingrediente e la tabella utente registrato
-SELECT DISTINCT ia.nickname, i.nome
-FROM intolleranza_alimentare_verso ia, ingrediente i, utenteregistrato u
-WHERE ia.id_ingrediente = i.id_ingrediente AND i.con_lattosio = 1
+--mi serve la tabella intolleranza alimentare verso, la tabella ingrediente
+SELECT ia.nickname, i.nome
+FROM intolleranza_alimentare_verso ia, ingrediente i
+WHERE ia.id_ingrediente = i.id_ingrediente AND con_lattosio = 1;
 
 
 --ricetta, categoriaricetta, utente registrato
@@ -89,8 +89,7 @@ VALUES ("fabio_castagnetti00", "2000/06/08", "03/12/2020", 1, 241) CHECK (id_ute
 --O13: Stampare l’elenco di tutte le ricette pubblicate di un utente registrato con votazione maggiore di tre
 SELECT r.id_ricetta, r.titolo , r.nickname, r.media_apprezzamento
 FROM ricetta r, utenteregistrato u
-WHERE r.nickname = u.nickname AND r.nickname = "name_is_anna" 
-        AND r.media_apprezzamento > 3
+WHERE r.nickname = "name_is_anna" AND r.media_apprezzamento > 3
 
 
 --O14: inserire un nuovo utente
