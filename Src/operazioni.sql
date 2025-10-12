@@ -35,7 +35,7 @@ VALUES (35, 29, "2 spicchi");
 
 --O5: inserire un nuovo ingrediente
 INSERT INTO ingrediente (id_ingrediente, nome, con_glutine, con_lattosio)
-VALUES (141, "Ananas", 0, 0);
+VALUES (121, "Ananas", 0, 0);
 
 
 --O6: stampare tutti gli ingredienti che fanno parte di una ricetta
@@ -46,18 +46,18 @@ WHERE i.id_ingrediente = c.id_ingrediente AND c.id_ricetta = r.id_ricetta AND
 
 
 --O7: Visionare tutti gli ingredienti con lattosio verso cui un utente registrato è intollerante
---mi serve la tabella intolleranza alimentare verso, la tabella ingrediente
-SELECT ia.nickname, i.nome
-FROM intolleranza_alimentare_verso ia, ingrediente i
-WHERE ia.id_ingrediente = i.id_ingrediente AND con_lattosio = 1;
+--mi serve la tabella intolleranza alimentare verso, la tabella ingrediente e la tabella utente registrato
+SELECT DISTINCT ia.nickname, i.nome
+FROM intolleranza_alimentare_verso ia, ingrediente i, utenteregistrato u
+WHERE ia.id_ingrediente = i.id_ingrediente AND ia.nickname = u.nickname AND i.con_lattosio = 1
 
 
 --ricetta, categoriaricetta, utente registrato
 --O8: stampare il nickname degli utenti registrati che non hanno mai pubblicato ricette di categoria "Primi piatti" 
 SELECT ur.nickname
-FROM utenteregistrato ur
+FROM utenteregistrato AS ur
 WHERE ur.nickname NOT IN (SELECT DISTINCT r.nickname
-			  FROM utenteregistrato u, ricetta r, categoriaricetta c
+			  FROM utenteregistrato AS u, ricetta AS r, categoriaricetta AS c
 			  WHERE u.nickname = r.nickname AND 
                                 r.id_categoria = c.id_categoria AND				
                                 c.nome = "Primi piatti")
@@ -83,13 +83,14 @@ WHERE r.nickname = u.nickname AND r.nickname = "ScalziLuisa1_"
 --O12: inserire un utenteregistrato
 INSERT INTO utenteregistrato (nickname, data_nascita, data_registrazione, newsletter, id_utente)
 VALUES ("fabio_castagnetti00", "2000/06/08", "03/12/2020", 1, 241) CHECK (id_utente IN (SELECT id_utente
-                                                                                        FROM utente))
 
+                                                                                       FROM utente))
 
 --O13: Stampare l’elenco di tutte le ricette pubblicate di un utente registrato con votazione maggiore di tre
 SELECT r.id_ricetta, r.titolo , r.nickname, r.media_apprezzamento
 FROM ricetta r, utenteregistrato u
-WHERE r.nickname = "name_is_anna" AND r.media_apprezzamento > 3
+WHERE r.nickname = u.nickname AND r.nickname = "name_is_anna" 
+        AND r.media_apprezzamento > 3
 
 
 --O14: inserire un nuovo utente
@@ -106,10 +107,3 @@ WHERE nome = "Nutella"
 SELECT *
 FROM ricetta
 WHERE senza_glutine = 'T'
-
-
---O16 bis: visionare tutte le ricette senza lattosio
-SELECT *
-FROM ricetta
-WHERE senza_lattosio = 'T'
-
