@@ -16,7 +16,7 @@ Questo progetto implementa un database relazionale per la gestione delle funzion
 Il database supporta operazioni di tipo DDL (Data Definition Language) e DML (Data Manipulation Language) in linguaggio SQL.
 
 Istruzioni:
-Importa `creazione_db.sql` nel tuo DBMS MySQL per creare il database.
+Importa `db_ricette.sql` nel tuo DBMS MySQL per creare il database.
 
 È possibile consultare il file .pdf che contiene la relativa documentazione sulla progettazione del database.
 I file operazioni.sql e trigger.sql contengono rispettivamente operazioni che sono possibili effettuare sul database ed esempio di trigger.
