@@ -1,5 +1,6 @@
 # DB_piattaforma_ricette
-Progetto per il corso universitario di Basi di Dati. DBMS: MySQL. Il file Massimo_Belfiore_X81001087_relazioneprogetto.pdf contiene la documentazione del progetto.
+Progetto per il corso universitario di Basi di Dati. DBMS: MySQL. 
+Il file Massimo_Belfiore_X81001087_relazioneprogetto.pdf contiene la documentazione del progetto.
 
 ---
 Questo progetto consiste nella progettazione e quindi realizzazione del database relazionale per una piattaforma di ricette di cucina italiane e gestione delle recensioni.
