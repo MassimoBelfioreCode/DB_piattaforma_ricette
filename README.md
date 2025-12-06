@@ -27,11 +27,13 @@ Il database da me creato supporta tutte le principali operazioni SQL:
 Contenuto degli script
 ---
 «» Lo script db_ricette.sql contiene il codice per creare il database.
+
 «» Lo script operazioni.sql contiene l’implementazione in SQL delle operazioni previste.
+
 «» Lo script trigger.sql contiene dei trigger.
+
 «» Lo script homepage_piattaforma_ricette.php contiene il codice per visualizzare sul Web Browser dell'utente la ricetta del giorno.
 
----
 
 **Utilizzare il Database**
 Istruzioni:
