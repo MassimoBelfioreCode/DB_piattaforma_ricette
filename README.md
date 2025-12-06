@@ -63,14 +63,13 @@ Alternativamente è possibile utilizzare MySQL CLI prima installandolo sulla pro
 ---
 Esempio di query:
 
---Ricerca di una ricetta in base agli ingredienti
+#Ricerca di una ricetta in base agli ingredienti
 
 SELECT R.id_ricetta, R.titolo, R.id_categoria, R.numero_recensioni, R.dosi_per, R.preparazione,
         R.senza_glutine, R.senza_lattosio, R.gourmet, R.media_apprezzamento
+        
 FROM ricetta R, contiene C, ingrediente I
+
 WHERE R.id_ricetta = C.id_ricetta AND C.id_ingrediente = I.id_ingrediente AND
       I.nome = "Spaghetti" AND
       C.quantita < "350g"
-
-
-   CREATE DATABASE piattaforma_ricette;
