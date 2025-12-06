@@ -34,8 +34,9 @@ Contenuto degli script
 
 «» Lo script homepage_piattaforma_ricette.php contiene il codice per visualizzare sul Web Browser dell'utente la ricetta del giorno.
 
-
-**Utilizzare il Database**
+---
+Utilizzare il Database
+---
 Istruzioni:
 
 1. Apri **phpMyAdmin** o **MySQL Workbench**.  
