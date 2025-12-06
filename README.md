@@ -7,9 +7,6 @@ Questo progetto consiste nella progettazione e quindi realizzazione del database
 Include la progettazione, la creazione delle tabelle, il popolamento dei dati, una serie di query SQL dimostrative e uno script php che mostra la ricetta del giorno.
 ---
 
-Il Database realizzato è stato ottimizzato tramite l'aggiunta di indici.
-È Possibile inoltre effettuare sul database operazioni di DML e DLL.
-
 **Tecnologie utilizzate**
 - **MySQL** (DBMS)  
 - **phpMyAdmin** per la gestione del database  
@@ -17,7 +14,9 @@ Il Database realizzato è stato ottimizzato tramite l'aggiunta di indici.
 - **Apache + PHP** come ambiente server locale  
 - **SQL (DDL + DML)** per la definizione e manipolazione dei dati  
 
-Il database da me creato supporta tutte le principali operazioni SQL:  
+Il Database realizzato è stato ottimizzato tramite l'aggiunta di indici.
+Il database permette di effettuare operazioni di DML e DLL, quindi supporta tutte le principali operazioni SQL:
+
 - creazione e gestione tabelle (DDL)  
 - inserimento, modifica e cancellazione dati (DML)
 - relazioni tra entità tramite chiavi primarie ed esterne  
