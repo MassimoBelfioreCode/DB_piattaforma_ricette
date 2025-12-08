@@ -52,12 +52,13 @@ Alternativamente è possibile utilizzare MySQL CLI prima installandolo sulla pro
 
 1. Avviate mysql dalla riga di comando della shell:
 2. mysql -u root -p
+   
    Inserisci Password: metti la password
-3. Create un nuovo utente per il database("nome database") e la relativa password("nome password")
+4. Create un nuovo utente per il database("nome database") e la relativa password("nome password")
    CREATE USER 'duser'@'localhost' IDENTIFIED BY 'nome password';
-4. Create un nuovo database per il progetto("db_piattaforma_ricette"):
+5. Create un nuovo database per il progetto("db_piattaforma_ricette"):
    CREATE DATABASE db_piattaforma_ricette;
-5. Adesso potete concedere sostanzialmente al nuovo utente che avete creato i diritti di accesso al nuovo database con:
+6. Adesso potete concedere sostanzialmente al nuovo utente che avete creato i diritti di accesso al nuovo database con:
    GRANT ALL ON db_piattaforma_ricette.* TO 'duser'@'localhost';
 
 ---
