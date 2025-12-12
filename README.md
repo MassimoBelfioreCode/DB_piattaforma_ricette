@@ -4,9 +4,9 @@ Progetto realizzato per il corso universitario di Basi di Dati e ampliato succes
 Il file Massimo_Belfiore_X81001087_relazioneprogetto.pdf contiene la documentazione dettagliata del progetto.
 
 
-Questo progetto consiste nella progettazione e quindi realizzazione del database relazionale per una piattaforma di ricette di cucina italiane e gestione delle recensioni.
-Include la progettazione, la creazione delle tabelle, il popolamento dei dati, una serie di query SQL dimostrative e uno script php che mostra la ricetta del giorno.
----
+**Questo progetto consiste nella progettazione e quindi realizzazione del database relazionale per una piattaforma di ricette di cucina italiane e gestione delle recensioni.
+Include la progettazione, la creazione delle tabelle, il popolamento dei dati, una serie di query SQL dimostrative e uno script php che mostra la ricetta del giorno.**
+
 
 **Tecnologie utilizzate**
 - **MySQL** (DBMS)  
