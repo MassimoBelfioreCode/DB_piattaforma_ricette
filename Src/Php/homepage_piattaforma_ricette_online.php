@@ -15,7 +15,6 @@
         </style>
     </head>
     <body>
-
         <p><strong> Ricetta del giorno </strong></p>
 
         <?php
@@ -30,71 +29,70 @@
             printf(" $date)");
             echo "</p>";
 
-            if($date == date("Y/m/d")){
-                $conn->select_db(DBNAME);
+            $conn->select_db(DBNAME);
             
-                $sql = "SELECT COUNT(*) AS numero_ricette FROM db_ricette.ricetta";
-                $res = $conn->query($sql);
+            $sql = "SELECT COUNT(*) AS numero_ricette FROM db_ricette.ricetta";
+            $res = $conn->query($sql);
                 
-                if(empty($res)){
+            if(empty($res)){
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            }
+
+            if($res->num_rows > 0){
+                $row = $res->fetch_assoc();
+                $num_ricette = (int)$row['numero_ricette'];
+            }
+            else{
+                "Nessuna ricetta restituita<br>";
+            }
+
+            if(!isset($_SESSION['id'])){
+                $_SESSION['id'] = rand(1, $num_ricette);
+            }
+
+            $stmt = $conn->prepare("SELECT titolo, gourmet, senza_glutine, senza_lattosio, nickname, dosi_per, preparazione FROM db_ricette.ricetta
+                                        WHERE id_ricetta = ?");
+            $stmt->bind_param("i", $_SESSION['id']);
+
+            if($stmt->execute() === TRUE){
+                $res = $stmt->get_result();
 
                 if($res->num_rows > 0){
-                    $row = $res->fetch_assoc();
-                    $num_ricette = (int)$row['numero_ricette'];
+                    $record = $res->fetch_assoc();
+
+                    echo '<table>';
+                        echo '<tr>';
+                            echo '<th> Titolo </th>';
+                            echo '<th> senza_glutine </th>';
+                            echo '<th> senza_lattosio </th>';
+                            echo '<th> dosi_per </th>';
+                            echo '<th> gourmet </th>';
+                            echo '<th> nickname </th>';
+                            echo '<th> preparazione </th>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($record['titolo']) . '</td>';
+                            echo '<td>' . htmlspecialchars($record['senza_glutine']) . '</td>';
+                            echo '<td>' . htmlspecialchars($record['senza_lattosio']) . '</td>';
+                            echo '<td>' . htmlspecialchars($record['dosi_per']) . '</td>';
+                            echo '<td>' . htmlspecialchars($record['gourmet']) . '</td>';
+                            echo '<td>' . htmlspecialchars($record['nickname']) . '</td>';
+                            echo '<td>' . htmlspecialchars($record['preparazione']) . '</td>';
+                        echo '</tr>';
+                    echo '</table>';
                 }
                 else{
-                    "Nessuna ricetta restituita<br>";
+                    echo "Nessun risultato<br>";
                 }
-
-                if(!isset($_SESSION['id'])){
-                    $_SESSION['id'] = rand(1, $num_ricette);
-                }
-
-                $stmt = $conn->prepare("SELECT titolo, gourmet, senza_glutine, senza_lattosio, nickname, dosi_per, preparazione FROM db_ricette.ricetta
-                                        WHERE id_ricetta = ?");
-                $stmt->bind_param("i", $_SESSION['id']);
-
-                if($stmt->execute() === TRUE){
-                    $res = $stmt->get_result();
-
-                    if($res->num_rows > 0){
-                        $record = $res->fetch_assoc();
-
-                        echo '<table>';
-                            echo '<tr>';
-                                echo '<th> Titolo </th>';
-                                echo '<th> senza_glutine </th>';
-                                echo '<th> senza_lattosio </th>';
-                                echo '<th> dosi_per </th>';
-                                echo '<th> gourmet </th>';
-                                echo '<th> nickname </th>';
-                                echo '<th> preparazione </th>';
-                            echo '</tr>';
-                            echo '<tr>';
-                            echo '<td>' . htmlspecialchars($record['titolo']) . '</td>';
-                                echo '<td>' . htmlspecialchars($record['senza_glutine']) . '</td>';
-                                echo '<td>' . htmlspecialchars($record['senza_lattosio']) . '</td>';
-                                echo '<td>' . htmlspecialchars($record['dosi_per']) . '</td>';
-                                echo '<td>' . htmlspecialchars($record['gourmet']) . '</td>';
-                                echo '<td>' . htmlspecialchars($record['nickname']) . '</td>';
-                                echo '<td>' . htmlspecialchars($record['preparazione']) . '</td>';
-                            echo '</tr>';
-                        echo '</table>';
-                    }
-                    else{
-                        echo "Nessun risultato<br>";
-                    }
-                }
-                else{
-                    echo "Error: " . $stmt . "<br>" . $stmt->error;
-                }
-
-                $res->free();
-                $stmt->close();
-                $conn->close();
             }
+            else{
+                echo "Error: " . $stmt . "<br>" . $stmt->error;
+            }
+
+            $res->free();
+            $stmt->close();
+            $conn->close();
+                
         ?>
 
         <br><q>La lettera F nelle voci <b>senza_lattosio</b> e <b>senza_glutine</b> vuole dire NO</q><br>
